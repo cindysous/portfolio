@@ -375,7 +375,6 @@ export default function TransactionTrackerScreens() {
           scrollSnapType: 'x mandatory',
           WebkitOverflowScrolling: 'touch',
           msOverflowStyle: 'none',
-          // @ts-expect-error vendor
           scrollbarWidth: 'none',
         }}>
           {screens.map((s, i) => (
