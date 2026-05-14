@@ -1,0 +1,61 @@
+---
+title: "Entity Management Redesign"
+company: "Conduit"
+year: "2025"
+role: "Principal Product Designer"
+platform: "B2B Web App"
+tags: ["B2B", "FinTech", "Systems Design"]
+teaser: "Turning compliance chaos into a navigable, trust-building system."
+description: "A foundational redesign of Conduit's entity management experience — transforming a compliance liability into a product differentiator for fintech operators."
+heroColor: "#1A1614"
+heroBg: "#2a211d"
+heroFullBleed: true
+inProgress: true
+order: 2
+nextSlug: "conduit-transaction-tracker"
+nextTitle: "Transaction Tracker"
+---
+
+<CaseSectionWrapper bg="#f0ebe5" shape shapeFill="#7d4f3e">
+
+<OverviewLayout cols={2}>
+
+<OverviewText>
+
+#### Context
+
+Conduit's entity infrastructure was built for a narrower product. When the company pivoted to international money movement, the same data model was stretched to fit — creating structural constraints that didn't surface until the product scaled.
+
+All entity types — senders, recipients, subsidiaries, customers, third parties — lived in one undifferentiated table. No classification. No hierarchy. Regulators and banking partners require clear entity separation; the system couldn't provide it. Resolving it required a coordinated overhaul across design, product, and engineering.
+
+#### Goals
+
+**Strengthen trust with providers and partners.** Compliance gaps risked losing banking partnerships and payment network access. Fiat on/off-ramps are core to Conduit's business — a defensible, auditable entity model protects those relationships long-term.
+
+**Prevent disruption to client transactions.** Live integrations and active transactions couldn't tolerate a hard cutover. Phased migration and dedicated client support ensured continuity throughout.
+
+**Build a compliant, scalable entity architecture.** The old model created a ceiling on growth and a floor of regulatory risk. Separating Clients, Customers, and Counterparties creates a clean, auditable foundation — and unlocks risk-based pricing, customer segmentation, and automated transaction limits.
+
+</OverviewText>
+
+<EntityOverviewVisual />
+
+</OverviewLayout>
+
+</CaseSectionWrapper>
+
+<EntityProblemCards />
+
+<CaseSectionWrapper bg="#fafaf8">
+
+## My Process
+
+<EntityProcessCarousel />
+
+</CaseSectionWrapper>
+
+<EntityPhases />
+
+<EntityPhasedRollout />
+
+<EntityOutcomes />

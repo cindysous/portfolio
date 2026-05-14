@@ -1,0 +1,118 @@
+---
+title: "Search & Filter Redesign"
+company: "IntelyCare"
+year: "2017–2024"
+role: "Principal Product Designer"
+platform: "B2C Mobile + Web"
+tags: ["B2C", "HealthTech", "Mobile Design"]
+teaser: "Filtering out friction so nurses can find — and book — the right shifts faster."
+description: "A full redesign of IntelyCare's shift discovery experience, addressing broken search constraints and friction-laden filter patterns that were driving nurse drop-off at scale."
+heroColor: "#1D2B26"
+heroBg: "#f3f5f3"
+order: 3
+archived: true
+prevSlug: "conduit-transaction-tracker"
+prevTitle: "Transaction Tracker"
+nextSlug: "conduit-entity-management"
+nextTitle: "Entity Management Redesign"
+---
+
+## Overview
+
+IntelyCare connects per-diem nurses and nursing assistants with healthcare facilities needing flexible staffing. The platform's core value proposition is **shift discovery**: the ability for a nurse to quickly find and book shifts that fit their schedule, location, and specialty.
+
+I joined as the **first design hire** and led a full redesign of the search and filter system — the feature through which every nurse starts their shift-finding journey.
+
+<ImagePlaceholder label="Shift discovery — existing experience" caption="Search and filter before: functional, but friction-laden at every step" aspect="16/8" />
+
+---
+
+## The Problem
+
+### Shift discovery was failing at scale
+
+IntelyCare's nursing community had grown to hundreds of thousands of clinicians across dozens of states. With scale came a fundamental problem: **the shift catalog had become too large to browse, but the search tools were too primitive to navigate**.
+
+Key failure modes identified through data analysis and user research:
+
+- **Empty results with no guidance** — searches for specific cities or shift types frequently returned zero results, with no suggested alternatives or proximity expansion
+- **Filter state amnesia** — applied filters reset on back-navigation, forcing users to re-build their query on every session
+- **Overlapping and contradictory filters** — specialty filters and credential filters used inconsistent logic, often producing fewer results than expected
+- **No spatial awareness** — location-based search treated a 2-mile radius and a 50-mile radius with equal visual weight, with no map context
+- **Mobile-hostile filter UX** — a collapsed filter panel with 12+ options was nearly unusable on mobile, requiring excessive taps to apply a basic query
+
+### The business impact
+
+Nurse drop-off from the search/filter step was measurable and costly. Each nurse that abandoned shift discovery represented a lost booking — and potentially a lost nurse, since IntelyCare competed with other per-diem platforms.
+
+> "I know there are shifts near me. I just can't find them."
+> — NurseReview feedback, recurring theme
+
+---
+
+## My Process
+
+### Research: mapping the friction points
+
+I conducted 8 moderated usability sessions with nurses across experience levels (new to platform, 6-month users, power users). Sessions included both think-aloud task scenarios and retrospective walkthroughs of their last booking session.
+
+Key findings:
+- **Power users had developed workarounds** — they'd set extremely broad filters, scroll through results, and mentally filter — because the filter system didn't support their actual mental model
+- **New users gave up fastest** — empty state errors were especially damaging, as new nurses couldn't distinguish between "no shifts available" and "my filters are wrong"
+- **Location was the most critical filter** — but it had the worst UX. Zip code search with no feedback was confusing for nurses in suburban/rural areas
+
+<ImagePlaceholder label="Research synthesis — friction map" caption="Every friction point plotted across the shift discovery journey" aspect="16/7" />
+
+### Redesigning the filter model
+
+Rather than incremental refinement, I advocated for a **filter model redesign** based on three principles:
+
+1. **Filters should narrow down a results set, not gate access to it** — starting with "all available shifts in your area" and filtering down, rather than requiring a fully-specified query to see any results
+2. **State persistence across sessions** — saved filter preferences as a named default, with easy reset
+3. **Transparent logic** — show nurses exactly why results changed as filters were applied, using plain-language feedback ("38 shifts match · removing specialty filter adds 124 more")
+
+### The smart empty state
+
+Empty states got a complete redesign. Rather than a flat "no results" message, the new empty state:
+- Diagnosed which filter combination was most restrictive
+- Offered a single-tap "relax this filter" action for the most constraining criteria
+- Showed nearby results just outside current radius with distance context
+- Preserved session context to avoid re-querying from scratch
+
+<ImageGrid>
+  <ImagePlaceholder label="Empty state — before" aspect="9/16" caption="Flat 'no results' with no path forward" />
+  <ImagePlaceholder label="Empty state — after" aspect="9/16" caption="Diagnosis + single-tap recovery action" />
+</ImageGrid>
+
+### Mobile-first filter panel
+
+The mobile filter experience was redesigned as a **bottom sheet** with:
+- A persistent filter summary bar (showing active filters as chips, always visible)
+- Grouped filter sections that could be individually collapsed
+- Live result count update as filters were changed (before applying)
+- A clear "Apply" + result count CTA at the bottom of the sheet
+
+<ImagePlaceholder label="Bottom sheet filter — mobile redesign" caption="Persistent summary bar, grouped sections, live result count" aspect="16/9" />
+
+---
+
+## Outcomes
+
+After a phased rollout to a 15% user cohort, then full launch:
+
+- **Search-to-booking conversion increased 27%** in the 90 days post-launch
+- **Filter abandonment rate dropped from 34% to 19%** on mobile
+- **Empty state exits decreased 61%** — nurses were finding results instead of leaving
+- The bottom sheet filter pattern was adopted as the platform's standard pattern for all multi-criteria filtering surfaces
+- The "smart filter suggestion" pattern was cited by the product team as a candidate for patent application
+
+<ImageGrid>
+  <ImagePlaceholder label="Shift results — before" aspect="4/3" />
+  <ImagePlaceholder label="Shift results — after" aspect="4/3" />
+</ImageGrid>
+
+### What I learned
+
+Designing for a marketplace with two-sided supply constraints is deeply different from single-sided product design. The search experience needs to serve both the nurse's preferences *and* the platform's need to make matches. The smart empty state was where these interests converged — it helped nurses find real shifts while preventing the platform from losing a booking opportunity.
+
+The biggest lesson: **filter systems fail when they're designed as query builders rather than guidance systems**. Nurses aren't database engineers. They're people trying to find a good shift quickly.

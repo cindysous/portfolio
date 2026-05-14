@@ -1,0 +1,121 @@
+---
+title: "Transaction Tracker"
+company: "Conduit"
+year: "2025"
+role: "Principal Product Designer"
+platform: "B2B Web App"
+tags: ["B2B", "FinTech", "Transaction UX"]
+teaser: "Redesigning transaction visibility to reduce confusion and build payment confidence."
+description: "Turning Conduit's biggest support burden — 'where is my payment?' — into a transparent, trust-building transaction experience."
+heroColor: "#1C2B3A"
+heroBg: "#233a52"
+heroFullBleed: true
+order: 1
+prevSlug: "conduit-entity-management"
+prevTitle: "Entity Management Redesign"
+---
+
+<CaseSectionWrapper bg="#e8eef7" shape shapeFill="#0445f5">
+
+<OverviewLayout>
+
+<OverviewText>
+
+#### "Where is my money?"
+
+Users needed **confidence**, not data — where their payment was, and what came next.
+
+- Transaction support was the **#1 ticket category**
+- Most required no human intervention — pure status queries
+- Status labels mapped to payment rails, not human understanding
+
+#### The labeling problem
+
+<StatusFlow />
+
+Accurate internally. Meaningless to users.
+
+</OverviewText>
+
+<OldDesignCard />
+
+</OverviewLayout>
+
+</CaseSectionWrapper>
+
+<CaseSectionWrapper bg="#ffffff">
+
+## Context
+
+<ProcessStep number="01" title="First project as Design Director.">
+This was my first project in the Design Director role. The mandate: raise the bar on experience quality across the product, starting with the area generating the most support burden.
+</ProcessStep>
+
+<ProcessStep number="02" title="An existing design system — but no experience language.">
+Conduit had a component library but no coherent interaction model for high-stakes flows. The task wasn't a clean slate — it was to redefine the experience and visual language within an established system.
+</ProcessStep>
+
+<ProcessStep number="03" title="Shadowing Operations and Compliance.">
+Before any design work, I embedded with Operations and Compliance teams — observing how they used the product, where they stalled, and what questions they were fielding from clients daily.
+</ProcessStep>
+
+<ProcessStep number="04" title="Scoping the experience with PM.">
+Worked closely with the PM to define scope: which steps in the transaction lifecycle to surface clearly, and what could be abstracted — while still communicating meaningful progress.
+</ProcessStep>
+
+</CaseSectionWrapper>
+
+<CaseSectionWrapper bg="#f8f9fb">
+
+## Phase 1 — Improving the existing experience
+
+The first phase focused on getting the fundamentals right. No new features — clearer status labels, better visual hierarchy in the transaction detail view, and status indicators that communicated state, not just technical stage.
+
+### Usability study
+
+Tested with three enterprise clients — operations managers using the transaction view daily.
+
+- **Overall positive** — users felt the redesign was a meaningful step up in clarity
+- **Key confusion: "Processing"** — users couldn't tell if something was actively in progress or stalled
+- **Consistent request:** more granular filtering by transaction state (pending vs. awaiting settlement vs. actively processing)
+
+> The confusion wasn't about missing information — it was about missing signal. "Processing" communicated nothing about whether something was moving.
+
+<ImageGrid>
+  <Phase1ScreenPreview />
+  <Phase1AnimatedPrototype />
+</ImageGrid>
+
+</CaseSectionWrapper>
+
+<CaseSectionWrapper bg="#ffffff">
+
+## Phase 2 — Expanding the experience
+
+Phase 2 built directly on Phase 1 feedback. The focus shifted from improving clarity to building active confidence — the feeling that something is in motion, not just in a state.
+
+<ProcessStep number="01" title="Substeps within statuses.">
+"Processing" became a container, not a label. Users could now see exactly where in the pipeline a transaction was — giving specificity to what had been a wall of ambiguity.
+</ProcessStep>
+
+<ProcessStep number="02" title="System state at every touchpoint.">
+Every point of user contact — list view, detail panel, notification — redesigned to communicate the same coherent state. No more cross-referencing multiple screens to form a picture.
+</ProcessStep>
+
+<ProcessStep number="03" title="Emotional design: calm confidence.">
+The goal wasn't just information — it was feeling. Users should feel calm confidence that something is actively happening. Settlement timing uncertainty was the core anxiety trigger — not the wait itself, but not knowing whether anything was moving.
+</ProcessStep>
+
+<ProcessStep number="04" title="Product intent: self-serve first.">
+Reduce inbound "where is my payment?" queries by giving users the tools to answer the question themselves. Support contact is surfaced last — only after contextual options are exhausted.
+</ProcessStep>
+
+<ProcessCarousel />
+
+</CaseSectionWrapper>
+
+<TransactionOutcomesSection />
+
+<TransactionAiExplorationSection />
+
+<TransactionLearnings />
