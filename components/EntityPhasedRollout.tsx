@@ -1,5 +1,7 @@
 'use client'
 
+import { CommsDetailCard, CommsModalCard } from '@/components/EntityCommsCards'
+
 const INK = '#111827'
 const MID = '#5c6677'
 
@@ -146,22 +148,10 @@ export default function EntityPhasedRollout() {
         {/* Grid: detail card + modal top row, two inline banners below */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
 
-          {/* Row 1: detail card + modal (square-ish proportions) */}
-          <div className="entity-comms-top-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-            {[
-              { src: '/images/entity-comms-detail.png', alt: 'Benefits detail card' },
-              { src: '/images/entity-comms-modal.png',  alt: 'Migration notice modal' },
-            ].map(img => (
-              <div key={img.src} style={{
-                borderRadius: 12, overflow: 'hidden',
-                border: '1px solid var(--border)',
-                background: '#fff',
-                boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-              }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.src} alt={img.alt} style={{ display: 'block', width: '100%', height: 'auto' }} />
-              </div>
-            ))}
+          {/* Row 1: detail card + modal — rendered as crisp React components */}
+          <div className="entity-comms-top-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, alignItems: 'start' }}>
+            <CommsDetailCard />
+            <CommsModalCard />
           </div>
 
         </div>
