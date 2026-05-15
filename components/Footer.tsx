@@ -16,7 +16,7 @@ export default function Footer() {
       }}
     >
       {/* Top row */}
-      <div className="flex justify-between items-center">
+      <div className="footer-top-row flex justify-between items-center">
         {/* Logo */}
         <div
           className="flex items-center gap-2"
@@ -44,7 +44,7 @@ export default function Footer() {
         </span>
 
         {/* Links */}
-        <ul className="flex gap-7 list-none m-0 p-0">
+        <ul className="footer-links-list flex gap-7 list-none m-0 p-0">
           {LINKS.map(link => (
             <li key={link.label}>
               <a

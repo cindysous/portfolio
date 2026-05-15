@@ -163,6 +163,22 @@ export default function EntityProblemCards() {
           .entity-problems-grid { grid-template-columns: 1fr !important; }
           .entity-problems-section { padding-left: calc(24px + var(--sidebar-gap)) !important; padding-right: 24px !important; }
         }
+        @media (max-width: 767px) {
+          .entity-problems-section {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .entity-problems-section {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+          }
+        }
       `}</style>
     </div>
   )

@@ -55,7 +55,7 @@ export default async function HomePage() {
           {featured[0] && (
             <Link
               href={`/work/${featured[0].slug}`}
-              className="featured-card"
+              className="featured-card featured-card-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
@@ -114,7 +114,7 @@ export default async function HomePage() {
           {featured[1] && (
             <Link
               href={`/work/${featured[1].slug}`}
-              className="featured-card"
+              className="featured-card featured-card-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
@@ -173,7 +173,7 @@ export default async function HomePage() {
           {featured[2] && (
             <Link
               href={`/work/${featured[2].slug}`}
-              className="featured-card"
+              className="featured-card featured-card-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
@@ -266,7 +266,7 @@ export default async function HomePage() {
           </div>
 
           {/* 3-column grid: photo | bio | experience+skills */}
-          <div data-reveal-stagger style={{
+          <div data-reveal-stagger className="about-3col-grid" style={{
             display: 'grid',
             gridTemplateColumns: '160px 1fr 260px',
             gap: '0 52px',

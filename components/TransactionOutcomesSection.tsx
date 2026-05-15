@@ -623,6 +623,22 @@ export default function TransactionOutcomesSection() {
               padding-right: 24px !important;
             }
           }
+          @media (max-width: 767px) {
+            .outcomes-section {
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+            }
+          }
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .outcomes-section {
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              padding-left: 40px !important;
+              padding-right: 40px !important;
+            }
+          }
         `}</style>
       </div>
 

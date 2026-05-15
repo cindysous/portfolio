@@ -254,6 +254,7 @@ export default function CaseStudiesSection({ studies }: { studies: Study[] }) {
     >
       {/* ── Header ── */}
       <div
+        className="case-studies-header"
         style={{
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
           marginBottom: 48, paddingBottom: 24,
@@ -291,7 +292,7 @@ export default function CaseStudiesSection({ studies }: { studies: Study[] }) {
 
       {/* ── Card grid — forhers layout ── */}
       {/* Row 1: feature card (wide) + medium card */}
-      <div style={{
+      <div className="case-studies-row1" style={{
         display: 'grid',
         gridTemplateColumns: '3fr 2fr',
         gap: 16,
@@ -305,6 +306,7 @@ export default function CaseStudiesSection({ studies }: { studies: Study[] }) {
       <div>
         <Link
           href={`/work/${displayed[2].slug}`}
+          className="case-studies-row2-card"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1.2fr',

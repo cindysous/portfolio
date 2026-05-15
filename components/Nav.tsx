@@ -288,6 +288,7 @@ export default function Nav() {
       {/* ── Left floating pill ───────────────────────────────── */}
       <nav
         aria-label="Site navigation"
+        className="nav-pill"
         style={{
           position: 'fixed', left: 20, top: '50%',
           transform: 'translateY(-50%)',
@@ -378,6 +379,53 @@ export default function Nav() {
           )
         })}
 
+      </nav>
+
+      {/* ── Mobile bottom nav bar ────────────────────────────── */}
+      <nav
+        aria-label="Mobile site navigation"
+        className="mobile-nav-bar"
+        style={{
+          position: 'fixed', bottom: 0, left: 0, right: 0,
+          zIndex: 50,
+          background: dark ? 'rgba(9,9,11,0.97)' : 'rgba(255,255,255,0.97)',
+          borderTop: `1px solid ${pillBorder}`,
+          backdropFilter: 'blur(24px)',
+          WebkitBackdropFilter: 'blur(24px)',
+          display: 'none', // shown via CSS media query
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          padding: '8px 0 max(8px, env(safe-area-inset-bottom))',
+        }}
+      >
+        {NAV_ITEMS.map((item, i) => {
+          if (item.hidden) return null
+          const Icon = ICONS[i]
+          const isActive = activeSection === item.section
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={item.href.startsWith('/#') ? handleAnchorClick(item.href) : undefined}
+              style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3,
+                padding: '4px 10px',
+                color: isActive ? (dark ? '#e4e4e7' : '#09090b') : iconColor,
+                textDecoration: 'none',
+              }}
+            >
+              <Icon filled={isActive} />
+              <span style={{
+                fontFamily: 'var(--font-inter)', fontSize: 9,
+                letterSpacing: '0.07em', textTransform: 'uppercase',
+                color: 'inherit',
+              }}>
+                {item.label}
+              </span>
+            </Link>
+          )
+        })}
       </nav>
 
       {/* ── Theme toggle — top right ─────────────────────────── */}

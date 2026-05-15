@@ -62,7 +62,7 @@ export default function CaseStudyScrollBar({ title, company, teaser }: Props) {
       }}>
 
         {/* ── Wordmark zone — matches sidebar-gap width ── */}
-        <div style={{
+        <div className="scrollbar-wordmark-zone" style={{
           width: 'var(--sidebar-gap)',
           flexShrink: 0,
           display: 'flex',

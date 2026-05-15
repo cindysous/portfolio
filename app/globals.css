@@ -7,6 +7,8 @@
     /* Left sidebar clearance: pill is at left:20px, ~54px wide → 74px total.
        Adding 46px breathing room = 120px left offset for all page content. */
     --sidebar-gap: 120px;
+    /* Mobile padding used across sections */
+    --mobile-px: 20px;
 
     /* ── Light mode palette ─────────────────────────────── */
     --bg:           #ffffff;
@@ -58,6 +60,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -433,3 +436,239 @@ body.loading { overflow: hidden; }
 [data-dark-section] .prose-warm strong       { color: rgba(245,243,239,0.96) !important; }
 [data-dark-section] .prose-warm :is(h2, h3) { color: rgba(245,243,239,0.96) !important; }
 [data-dark-section] .prose-warm hr          { border-color: rgba(255,255,255,0.10) !important; }
+
+/* ── Mobile responsive overrides ────────────────────────────────────────────
+   These only apply on screens ≤ 767px (mobile) and 768–1023px (tablet).
+   Desktop styles (1024px+) are completely untouched.                        */
+
+/* ── Tablet (768–1023px): reduce sidebar gap so content isn't too cramped ─ */
+@media (max-width: 1023px) {
+  :root {
+    --sidebar-gap: 80px;
+  }
+}
+
+/* ── Mobile (≤ 767px): zero out sidebar gap, full-width content ─────────── */
+@media (max-width: 767px) {
+  :root {
+    --sidebar-gap: 0px;
+  }
+
+  /* Nav pill: hide the vertical left pill on mobile */
+  .nav-pill {
+    display: none !important;
+  }
+
+  /* Mobile bottom nav bar: show on mobile */
+  .mobile-nav-bar {
+    display: flex !important;
+  }
+
+  /* Mobile top nav bar: always visible (not just on scroll) */
+  .nav-topbar-mobile {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Ensure body has room for the bottom nav bar */
+  body {
+    padding-bottom: calc(64px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Homepage sections: reduce padding on mobile */
+  #featured-work,
+  #about,
+  #contact {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* Featured work cards: single column on mobile */
+  .featured-card-grid {
+    grid-template-columns: 1fr !important;
+    min-height: unset !important;
+  }
+  .featured-card-grid > div:last-child {
+    min-height: 220px !important;
+  }
+
+  /* About 3-column grid → single column */
+  .about-3col-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer: stack vertically */
+  .footer-top-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: flex-start !important;
+  }
+  .footer-links-list {
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+  footer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Case study page: hero card full-column on mobile */
+  .case-hero-card {
+    grid-template-columns: 1fr !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  .case-hero-card > div:first-child {
+    padding: 36px 20px 32px !important;
+  }
+  .case-hero-visual {
+    min-height: 240px !important;
+  }
+  /* Back button padding */
+  .case-back-btn-wrap {
+    padding: 24px 20px 16px !important;
+  }
+
+  /* Prev/next nav: stack on mobile */
+  .case-prevnext-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .case-prevnext-grid > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+
+  /* Case study content padding */
+  .case-content-area {
+    padding: 0 20px 64px !important;
+  }
+
+  /* Hero section: left padding matches mobile */
+  #hero > div:first-child {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Full-bleed sections: fix negative-margin pattern */
+  .tx-process-section,
+  .outcomes-section,
+  .entity-problems-section,
+  .entity-phases-section,
+  .entity-rollout-section,
+  .entity-outcomes-section,
+  .case-section-wrapper,
+  .learnings-section,
+  .entity-learnings-section,
+  .ai-exploration-section,
+  .entity-launch-section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* CaseStudiesSection header: stack on mobile */
+  .case-studies-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+  .case-studies-header p {
+    text-align: left !important;
+  }
+
+  /* CaseStudiesSection card grid: single column */
+  .case-studies-row1 {
+    grid-template-columns: 1fr !important;
+  }
+  .case-studies-row2-card {
+    grid-template-columns: 1fr !important;
+  }
+  /* CaseStudiesSection section padding */
+  #work {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* CaseStudyScrollBar: hide wordmark sidebar area on mobile */
+  .scrollbar-wordmark-zone {
+    display: none !important;
+  }
+
+  /* Hide the hero name whitespace:nowrap issue */
+  .hero-name {
+    white-space: normal !important;
+    font-size: clamp(40px, 12vw, 80px) !important;
+  }
+}
+
+/* ── Hide mobile nav bar on tablet and desktop ───────────────────────────── */
+@media (min-width: 768px) {
+  .mobile-nav-bar {
+    display: none !important;
+  }
+  body {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* ── Tablet (768–1023px) finer adjustments ──────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  #featured-work,
+  #about,
+  #contact {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  /* Featured work cards: keep 2-col but allow stacking if too cramped */
+  /* About grid: photo+bio span 2 cols, then experience below */
+  .about-3col-grid {
+    grid-template-columns: 160px 1fr !important;
+  }
+  .about-3col-grid > div:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  footer {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  #work {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  .tx-process-section,
+  .outcomes-section,
+  .entity-problems-section,
+  .entity-phases-section,
+  .entity-rollout-section,
+  .entity-outcomes-section,
+  .case-section-wrapper,
+  .learnings-section,
+  .entity-learnings-section,
+  .ai-exploration-section,
+  .entity-launch-section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+
+  /* Case study hero: reduce horizontal padding on tablet */
+  .case-hero-card > div:first-child {
+    padding: 48px 40px !important;
+  }
+  .case-back-btn-wrap {
+    padding: 28px 40px 16px !important;
+  }
+  .case-content-area {
+    padding: 0 40px 80px !important;
+  }
+}

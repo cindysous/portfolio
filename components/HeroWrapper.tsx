@@ -49,10 +49,11 @@ export default function HeroWrapper() {
 
         {/* Name */}
         <h1
+          className="hero-name"
           style={{
             fontFamily: 'var(--font-inter)',
             fontSize: 'clamp(52px, 7.5vw, 120px)',
-          whiteSpace: 'nowrap',
+            whiteSpace: 'nowrap',
             fontWeight: 800, lineHeight: 0.88, letterSpacing: '-0.04em',
             color: 'var(--hero-ink)', marginBottom: 24,
             opacity: 0, animation: 'fadeUp 0.7s 0.2s ease forwards',

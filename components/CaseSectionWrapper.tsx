@@ -18,6 +18,7 @@ export default function CaseSectionWrapper({ bg, children, shape, shapeFill = '#
   return (
     <div
       data-reveal
+      className="case-section-wrapper"
       {...(dark ? { 'data-dark-section': '' } : {})}
       style={{
         marginLeft: 'calc(-80px - var(--sidebar-gap))',

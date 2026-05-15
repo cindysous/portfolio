@@ -74,14 +74,14 @@ export default async function CaseStudyPage({ params }: Props) {
       }}>
 
       {/* Back button */}
-      <div style={{ padding: '32px 80px 20px' }}>
+      <div className="case-back-btn-wrap" style={{ padding: '32px 80px 20px' }}>
         <Link href="/#featured-work" className="all-work-btn">
           ← All work
         </Link>
       </div>
 
       {/* Hero card */}
-      <div style={{
+      <div className="case-hero-card" style={{
         margin: fullBleed ? 0 : '0 80px',
         background: frontmatter.heroColor,
         borderRadius: fullBleed ? 0 : 20,
@@ -173,7 +173,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
 
         {/* Right — visual mockup (slug-specific) */}
-        <div style={{ position: 'relative', minHeight: 400, overflow: 'hidden' }}>
+        <div className="case-hero-visual" style={{ position: 'relative', minHeight: 400, overflow: 'hidden' }}>
           <CaseStudyHeroVisual slug={slug} heroColor={frontmatter.heroColor} />
         </div>
 
@@ -182,7 +182,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </div>{/* end hero white wrapper */}
 
       {/* ── CASE STUDY CONTENT ────────────────────────────────── */}
-      <div style={{ padding: '0 80px 96px' }}>
+      <div className="case-content-area" style={{ padding: '0 80px 96px' }}>
         <article className="prose prose-warm max-w-none">
           <MDXRemote source={content} components={MdxComponents} />
         </article>
@@ -190,7 +190,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
       {/* ── PREV / NEXT NAV ───────────────────────────────────── */}
       <div data-reveal style={{ borderTop: '1px solid var(--border)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
+        <div className="case-prevnext-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
 
           {/* Prev */}
           <div style={{ borderRight: '1px solid var(--border)' }}>

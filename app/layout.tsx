@@ -55,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${homemadeApple.variable}`}
     >
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
       </head>
       <body className="bg-bg font-sans antialiased">

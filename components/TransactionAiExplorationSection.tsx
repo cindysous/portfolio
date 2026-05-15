@@ -315,6 +315,22 @@ export default function TransactionAiExplorationSection() {
             .ai-exploration-section { padding-left: calc(24px + var(--sidebar-gap)) !important; padding-right: 24px !important; }
             .ai-exploration-grid { grid-template-columns: 1fr !important; }
           }
+          @media (max-width: 767px) {
+            .ai-exploration-section {
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              padding-left: 20px !important;
+              padding-right: 20px !important;
+            }
+          }
+          @media (min-width: 768px) and (max-width: 1023px) {
+            .ai-exploration-section {
+              margin-left: 0 !important;
+              margin-right: 0 !important;
+              padding-left: 40px !important;
+              padding-right: 40px !important;
+            }
+          }
         `}</style>
       </div>
 
