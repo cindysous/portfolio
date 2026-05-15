@@ -66,7 +66,7 @@ export default async function CaseStudyPage({ params }: Props) {
       />
 
       {/* ── HERO — full-bleed when heroFullBleed; tinted wrapper otherwise ── */}
-      <div style={{
+      <div className="case-hero-outer" style={{
         marginLeft: 'calc(-1 * var(--sidebar-gap))',
         paddingLeft: 'var(--sidebar-gap)',
         background: fullBleed ? frontmatter.heroColor : (frontmatter.heroBg ?? '#f4f4f5'),
@@ -173,7 +173,7 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
 
         {/* Right — visual mockup (slug-specific) */}
-        <div className="case-hero-visual" style={{ position: 'relative', minHeight: 400, overflow: 'hidden' }}>
+        <div className={`case-hero-visual case-hero-visual-${slug}`} style={{ position: 'relative', minHeight: 400, overflow: 'hidden' }}>
           <CaseStudyHeroVisual slug={slug} heroColor={frontmatter.heroColor} />
         </div>
 

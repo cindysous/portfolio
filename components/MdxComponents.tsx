@@ -106,7 +106,7 @@ function OverviewText({ children }: { children: React.ReactNode }) {
 // Overview layout: cols=1 for text-only, cols=2 for text + visual
 function OverviewLayout({ children, cols = 2 }: { children: React.ReactNode; cols?: 1 | 2 }) {
   return (
-    <div style={{ padding: '80px 0 72px' }}>
+    <div className="overview-layout-section" style={{ padding: '80px 0 72px' }}>
       <h2 className="not-prose" style={{
         fontFamily: 'var(--font-inter)',
         fontSize: 'clamp(24px, 2.6vw, 38px)',
@@ -118,7 +118,7 @@ function OverviewLayout({ children, cols = 2 }: { children: React.ReactNode; col
       }}>
         Overview
       </h2>
-      <div style={{
+      <div className="overview-layout-grid" style={{
         display: 'grid',
         gridTemplateColumns: cols === 1 ? '1fr' : '1fr 1fr',
         gap: '0 56px',
@@ -226,7 +226,7 @@ function InProgressBanner() {
 // </ImageGrid>
 function ImageGrid({ children, cols = 2 }: { children: React.ReactNode; cols?: number }) {
   return (
-    <div style={{
+    <div className="image-grid-container" style={{
       display: 'grid',
       gridTemplateColumns: `repeat(${cols}, 1fr)`,
       gap: 12, margin: '0',
@@ -395,7 +395,7 @@ const mdxComponents: MDXComponents = {
   Phase1AnimatedPrototype,
 
   h2: ({ children }) => (
-    <div style={{ marginTop: 72, marginBottom: 28, paddingTop: 48, borderTop: '1px solid var(--border)' }}>
+    <div className="mdx-h2-block" style={{ marginTop: 72, marginBottom: 28, paddingTop: 48, borderTop: '1px solid var(--border)' }}>
       <div style={{
         fontFamily: 'var(--font-inter)', fontSize: 9, letterSpacing: '0.16em',
         textTransform: 'uppercase', color: 'var(--warm-light)', marginBottom: 14,

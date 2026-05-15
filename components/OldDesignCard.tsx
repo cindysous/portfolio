@@ -46,7 +46,7 @@ export default function OldDesignCard() {
               </span>
             </div>
             {/* Screenshot — cropped to fixed height */}
-            <div style={{ position: 'relative', height: 500, overflow: 'hidden', background: '#fff' }}>
+            <div className="old-design-image-container" style={{ position: 'relative', height: 500, overflow: 'hidden', background: '#fff' }}>
               <img
                 alt="Transaction detail — existing state"
                 src={SRC}

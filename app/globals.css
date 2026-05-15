@@ -481,8 +481,8 @@ body.loading { overflow: hidden; }
   #contact {
     padding-left: 20px !important;
     padding-right: 20px !important;
-    padding-top: 56px !important;
-    padding-bottom: 56px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
 
   /* Featured work cards: single column on mobile */
@@ -490,8 +490,9 @@ body.loading { overflow: hidden; }
     grid-template-columns: 1fr !important;
     min-height: unset !important;
   }
+  /* Taller visual section so all 3 TX rows + Entity Mgmt details show fully */
   .featured-card-grid > div:last-child {
-    min-height: 220px !important;
+    min-height: 400px !important;
   }
 
   /* About 3-column grid → single column */
@@ -523,8 +524,32 @@ body.loading { overflow: hidden; }
   .case-hero-card > div:first-child {
     padding: 36px 20px 32px !important;
   }
+  /* Taller hero visual — entity management needs ~490px for both panels */
   .case-hero-visual {
-    min-height: 240px !important;
+    min-height: 520px !important;
+  }
+
+  /* Transaction Tracker: hide all blurred rows on mobile — keep focus on expanded row */
+  .tx-blurred-row {
+    display: none !important;
+  }
+
+  /* Transaction Tracker: hide From / To secondary labels on mobile */
+  .tx-from-detail,
+  .tx-to-detail {
+    display: none !important;
+  }
+
+  /* Overview section (Transaction Tracker + Entity Mgmt): stack visual below text */
+  .overview-layout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px 0 !important;
+  }
+
+  /* Phase 1 ImageGrid: stack screens vertically */
+  .image-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
   }
   /* Back button padding */
   .case-back-btn-wrap {
@@ -542,7 +567,7 @@ body.loading { overflow: hidden; }
 
   /* Case study content padding */
   .case-content-area {
-    padding: 0 20px 64px !important;
+    padding: 0 20px 48px !important;
   }
 
   /* Hero section: left padding matches mobile */
@@ -551,7 +576,7 @@ body.loading { overflow: hidden; }
     padding-right: 20px !important;
   }
 
-  /* Full-bleed sections: fix negative-margin pattern */
+  /* Full-bleed sections: fix negative-margin pattern + reduce vertical spacing */
   .tx-process-section,
   .outcomes-section,
   .entity-problems-section,
@@ -567,6 +592,21 @@ body.loading { overflow: hidden; }
     margin-right: 0 !important;
     padding-left: 20px !important;
     padding-right: 20px !important;
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
+  }
+
+  /* Overview section wrapper: tighten vertical spacing */
+  .overview-layout-section {
+    padding-top: 44px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Case study h2 section dividers: tighten top breathing room */
+  .mdx-h2-block {
+    margin-top: 40px !important;
+    padding-top: 32px !important;
+    margin-bottom: 20px !important;
   }
 
   /* CaseStudiesSection header: stack on mobile */
@@ -590,8 +630,8 @@ body.loading { overflow: hidden; }
   #work {
     padding-left: 20px !important;
     padding-right: 20px !important;
-    padding-top: 56px !important;
-    padding-bottom: 56px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
 
   /* CaseStudyScrollBar: hide wordmark sidebar area on mobile */
@@ -603,6 +643,55 @@ body.loading { overflow: hidden; }
   .hero-name {
     white-space: normal !important;
     font-size: clamp(40px, 12vw, 80px) !important;
+  }
+}
+
+/* ── TX mockup: compact labels — hidden by default, shown on smallest screens */
+.tx-badge-compact { display: none; }
+
+/* ≤ 414px: smallest mobile — tighten spacing + compact TX labels */
+@media (max-width: 414px) {
+
+  /* TX mockup: compact badge / label / steps */
+  .tx-badge-full    { display: none !important; }
+  .tx-badge-compact { display: inline !important; }
+  .tx-compliance-approved-suffix  { display: none !important; }
+  .tx-processing-payment-suffix   { display: none !important; }
+  .tx-steps-sep,
+  .tx-steps-label   { display: none !important; }
+
+  /* ── Homepage hero: remove tall min-height + reduce top/bottom padding ── */
+  /* Eliminates excess space above "Principal Product Designer"              */
+  /* and below "10+ Years Experience"                                        */
+  #hero {
+    min-height: auto !important;
+  }
+  #hero > div:first-child {
+    padding-top: 36px !important;
+    padding-bottom: 32px !important;
+  }
+
+  /* ── TX landing page hero: tighten surrounding spacing ── */
+  /* Reduces space above/below the hero visual on smallest screens */
+  .case-hero-outer {
+    padding-bottom: 40px !important;
+  }
+  .case-back-btn-wrap {
+    padding: 16px 20px 8px !important;
+  }
+  .case-hero-card > div:first-child {
+    padding: 24px 20px 20px !important;
+  }
+
+  /* TX tracker hero visual: reduce min-height since blurred rows are hidden */
+  /* (Entity Management keeps its 520px for the two-panel layout)            */
+  .case-hero-visual-conduit-transaction-tracker {
+    min-height: 340px !important;
+  }
+
+  /* ── OldDesignCard: reduce fixed screenshot crop height ── */
+  .old-design-image-container {
+    height: 300px !important;
   }
 }
 
@@ -670,5 +759,17 @@ body.loading { overflow: hidden; }
   }
   .case-content-area {
     padding: 0 40px 80px !important;
+  }
+
+  /* Overview section: stack visual below text on tablet */
+  .overview-layout-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px 0 !important;
+  }
+
+  /* Phase 1 ImageGrid: stack screens vertically on tablet */
+  .image-grid-container {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
   }
 }

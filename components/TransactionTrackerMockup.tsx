@@ -67,8 +67,9 @@ function Pill({ fillPct, flex, fixedWidth }: { fillPct: number; flex?: boolean; 
 }
 
 // ─── Status badge (matches Figma: border #dae1ed, rounded-[8px]) ─────────────
-function Badge({ label, dot, check, color, bg }: {
-  label: string; color: string; bg: string; dot?: boolean; check?: boolean
+// compactLabel: if provided, shows compactLabel on ≤414px and label on wider screens
+function Badge({ label, dot, check, color, bg, compactLabel }: {
+  label: string; color: string; bg: string; dot?: boolean; check?: boolean; compactLabel?: string
 }) {
   return (
     <div style={{
@@ -81,9 +82,16 @@ function Badge({ label, dot, check, color, bg }: {
     }}>
       {check && <span style={{ fontSize: 11, color, lineHeight: 1 }}>✓</span>}
       {dot && <div style={{ width: 8, height: 8, borderRadius: '50%', background: color, flexShrink: 0 }} />}
-      <span style={{ fontSize: 11, fontWeight: 500, color, fontFamily: 'Inter, system-ui, sans-serif', whiteSpace: 'nowrap' }}>
-        {label}
-      </span>
+      {compactLabel ? (
+        <>
+          <span className="tx-badge-full" style={{ fontSize: 11, fontWeight: 500, color, fontFamily: 'Inter, system-ui, sans-serif', whiteSpace: 'nowrap' }}>{label}</span>
+          <span className="tx-badge-compact" style={{ fontSize: 11, fontWeight: 500, color, fontFamily: 'Inter, system-ui, sans-serif', whiteSpace: 'nowrap' }}>{compactLabel}</span>
+        </>
+      ) : (
+        <span style={{ fontSize: 11, fontWeight: 500, color, fontFamily: 'Inter, system-ui, sans-serif', whiteSpace: 'nowrap' }}>
+          {label}
+        </span>
+      )}
     </div>
   )
 }
@@ -121,12 +129,12 @@ function CollapsedRow({ month, day, label, amount, currency, badgeLabel, badgeCo
       {/* From */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 12, fontWeight: 600, color: '#141414', fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{label}</div>
-        <div style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>From My Conduit Account</div>
+        <div className="tx-from-detail" style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>From My Conduit Account</div>
       </div>
       {/* Amount */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: 12, fontWeight: 500, color: '#141414', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{amount}</div>
-        <div style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>{currency}</div>
+        <div className="tx-to-detail" style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>{currency}</div>
       </div>
       {/* Badge */}
       <Badge label={badgeLabel} color={badgeColor} bg={badgeBg} dot={dot} check={check} />
@@ -169,13 +177,13 @@ function ExpandedRow({ processingPct }: { processingPct: number }) {
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 12, fontWeight: 600, color: '#141414', fontFamily: 'Inter, sans-serif', letterSpacing: '-0.01em' }}>USD → USDC (ETH)</div>
-          <div style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>From My Conduit Account · 269,730 USDC (ETH)</div>
+          <div className="tx-from-detail" style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>From My Conduit Account · 269,730 USDC (ETH)</div>
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ fontSize: 12, fontWeight: 500, color: '#141414', fontFamily: 'Inter, sans-serif' }}>269,730 USDC (ETH)</div>
-          <div style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>To Jane Doe</div>
+          <div className="tx-to-detail" style={{ fontSize: 10, color: '#9ca3af', fontFamily: 'Inter, sans-serif', marginTop: 2 }}>To Jane Doe</div>
         </div>
-        <Badge label="Processing Payment" color="#0445F5" bg="#fff" dot />
+        <Badge label="Processing Payment" compactLabel="Processing" color="#0445F5" bg="#fff" dot />
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ flexShrink: 0, opacity: 0.35 }}>
           <path d="M4 8.5L7 5.5L10 8.5" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -216,15 +224,17 @@ function ExpandedRow({ processingPct }: { processingPct: number }) {
           {/* Compliance Approved */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'center', flexShrink: 0 }}>
             <Pill fillPct={100} fixedWidth={78} />
-            <span style={{ fontSize: 9, fontFamily: 'Inter, sans-serif', color: '#141414', whiteSpace: 'nowrap' }}>Compliance Approved</span>
+            <span style={{ fontSize: 9, fontFamily: 'Inter, sans-serif', color: '#141414', whiteSpace: 'nowrap' }}>
+              Compliance<span className="tx-compliance-approved-suffix"> Approved</span>
+            </span>
           </div>
           {/* Processing — animated, fills remaining space */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 5, alignItems: 'center', flex: 1, minWidth: 0 }}>
             <Pill fillPct={processingPct} flex />
-            <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-              <span style={{ fontSize: 9, fontWeight: 600, color: '#141414', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Processing Payment</span>
-              <span style={{ fontSize: 9, color: '#85829a' }}>|</span>
-              <span style={{ fontSize: 9, color: '#85829a', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>{stepLabel} of 3 Steps</span>
+            <div style={{ display: 'flex', gap: 4, alignItems: 'center', overflow: 'hidden' }}>
+              <span style={{ fontSize: 9, fontWeight: 600, color: '#141414', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Processing<span className="tx-processing-payment-suffix"> Payment</span></span>
+              <span className="tx-steps-sep" style={{ fontSize: 9, color: '#85829a' }}>|</span>
+              <span className="tx-steps-label" style={{ fontSize: 9, color: '#85829a', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>{stepLabel} of 3 Steps</span>
             </div>
           </div>
           {/* Completed */}
@@ -281,7 +291,7 @@ export default function TransactionTrackerMockup() {
         marginTop: 24,
       }}>
         {/* Row 1 — Completed, bleeds off top */}
-        <div style={{ filter: 'blur(2.5px)', opacity: 0.7 }}>
+        <div className="tx-blurred-row tx-blurred-row-top" style={{ filter: 'blur(2.5px)', opacity: 0.7 }}>
         <CollapsedRow
           month="JAN" day="15"
           label="USD → EUR"
@@ -298,7 +308,7 @@ export default function TransactionTrackerMockup() {
         <ExpandedRow processingPct={pct} />
 
         {/* Row 3 — Awaiting Funds, bleeds off bottom */}
-        <div style={{ filter: 'blur(2.5px)', opacity: 0.7 }}>
+        <div className="tx-blurred-row" style={{ filter: 'blur(2.5px)', opacity: 0.7 }}>
         <CollapsedRow
           month="OCT" day="28"
           label="USD → MXN"
